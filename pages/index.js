@@ -3,7 +3,7 @@ import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section from "../utils/Section.js";
-import PopupWithForms from "../components/Popupwithforms.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
@@ -11,8 +11,8 @@ const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
-const addTodoPopup = new PopupWithForms({
-  popupSelector: "#add-todo-popup",
+const addTodoPopup = new PopupWithForm({
+  popupselector: "#add-todo-popup",
   handleFormSubmit: () => {},
 });
 

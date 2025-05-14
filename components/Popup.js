@@ -7,19 +7,18 @@ class Popup {
 
   open() {
     this._popupElement.classList.add("popup_visible");
-  }
-
-  close() {
-    this._popupElement.classList.remove("popup_visible");
-  }
-
-  _handleEscapeClose() {
     document.addEventListener("keydown", (evt) => {
       if (evt.key === "Escape") {
         this.close();
       }
     });
   }
+
+  close() {
+    this._popupElement.classList.remove("popup_visible");
+  }
+
+  _handleEscapeClose() {}
 
   setEventListeners() {
     this._popupButtonSelector.addEventListener("click", () => {
