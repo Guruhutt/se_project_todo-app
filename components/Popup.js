@@ -3,6 +3,7 @@ class Popup {
     this._popupElement = document.querySelector(popupselector);
     this._popupButtonSelector =
       this._popupElement.querySelector(".popup__close");
+    this._handleEscapeClose = this._handleEscapeClose.bind(this);
   }
 
   _handleEscapeClose(evt) {
