@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import { FormValidator } from "../components/FormValidator.js";
-import Section from "../utils/Section.js";
+import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import TodoCounter from "../components/Todocounter.js";
 
@@ -24,22 +24,11 @@ const addTodoPopup = new PopupWithForm({
     renderTodo(name, cardDate, id);
     addTodoPopup.close();
     newTodoValidator.resetValidation();
+    todoCounter.updateTotal(true);
   },
 });
 
 addTodoPopup.setEventListeners();
-
-const section = new Section({
-  items: initialTodos,
-  renderer: (item) => {
-    const newTodo = new Todo(item, "#todo-template", handleCheck, handleDelete);
-    const newTodoElement = newTodo.getView();
-    section.addItem(newTodoElement);
-  },
-  containerSelector: ".todos__list",
-});
-
-section.renderItems();
 
 function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
@@ -65,8 +54,15 @@ addTodoButton.addEventListener("click", () => {
 const renderTodo = (name, date, id) => {
   const todo = generateTodo({ name, date, id });
   section.addItem(todo);
-  todoCounter.updateTotal(true);
 };
+
+const section = new Section({
+  items: initialTodos,
+  renderer: (item) => renderTodo(item.name, item.date, item.id),
+  containerSelector: ".todos__list",
+});
+
+section.renderItems();
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();

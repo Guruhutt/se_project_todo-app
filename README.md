@@ -14,4 +14,4 @@ made mostly using javascript form validation and Classes
 
 This project is deployed on GitHub Pages:
 
-https://github.com/Guruhutt/se_project_todo-app
+https://guruhutt.github.io/se_project_todo-app/
